@@ -1,0 +1,128 @@
+<div class="divv">
+  <mat-card class="card">
+    <!-- <ul> -->
+    <h3 class="cdda">รถยนต์ที่เลือก</h3>
+    <!-- </ul> -->
+    <img mat-card-image class="image" src="{{Specification?.image}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <div class="divvv">
+        <mat-card class="card8">
+          <p class="text">ยี่ห้อ</p>
+          <p class="text1">{{Specification?.brand}}</p>
+        </mat-card>
+        <mat-card class="card2">
+          <p class="text">รุ่น</p>
+          <p class="text1">{{Specification?.generation}}</p>
+        </mat-card>
+      </div>
+      <div class="divvv">
+        <mat-card class="card3">
+          <p class="text">เกียร์</p>
+          <p class="text1">{{gear}}</p>
+        </mat-card>
+        <mat-card class="card4">
+          <p class="text"> ปี</p>
+          <p class="text1">{{Specification?.year}}</p>
+        </mat-card>
+      </div>
+      <mat-card class="card5">
+        <p class="text">วงเงินที่ต้องการ</p>
+        <p class="text1">{{financing | number}} บาท</p>
+      </mat-card>
+      <mat-card class="card6">
+        <p class="text">ระยะเวลาผ่อน </p>
+        <p class="text1">{{ber}} เดือน</p>
+      </mat-card>
+      <mat-card class="card7">
+        <p class="text">ค่างวดต่อเดือน</p>
+        <p class="text1">{{payment | number}} บาท</p>
+      </mat-card>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+
+  </mat-card>
+
+  <mat-card class="card1">
+    <mat-card-content>
+      <form #regisForm="ngForm" (ngSubmit)="save()">
+        <!-- <ul> -->
+        <h3 class="cdda">ข้อมูลส่วนตัว</h3>
+        <!-- </ul> -->
+        <mat-card class="card11">
+          <div class="divvv">
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>ชื่อ</mat-label>
+              <input matInput placeholder="ชื่อ" [(ngModel)]="customer.firstName" name="firstName" required>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>นามสกุล</mat-label>
+              <input matInput placeholder="นามสกุล" name="lastName" [(ngModel)]="customer.lastName" required>
+            </mat-form-field>
+          </div>
+
+          <div class="divvv">
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>เบอร์มือถือ</mat-label>
+              <input matInput maxlength="10" placeholder="เบอร์มือถือ" [(ngModel)]="customer.phoneNumber"
+                name="phoneNumber" required>
+              <!-- <mat-hint align="end">{{customer.phoneNumber?.length || 0}}/10</mat-hint> -->
+            </mat-form-field>
+
+            <mat-form-field class="input">
+              <mat-label>อีเมล</mat-label>
+              <input matInput placeholder="อีเมล" name="email" [(ngModel)]="customer.email" required>
+              <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <mat-form-field class="input">
+            <mat-label>เลขบัตรประชาชน</mat-label>
+            <input matInput maxlength="13" placeholder="เลขบัตรประชาชน" name="idCardNumber"
+              [(ngModel)]="customer.idCardNumber" required>
+            <!-- <mat-hint align="end">{{customer.idCardNumber?.length || 0}}/13</mat-hint> -->
+          </mat-form-field>
+          <mat-card-actions>
+          </mat-card-actions>
+        </mat-card>
+        <!-- <ul> -->
+        <h3 class="cdda">ข้อมูลการเงิน</h3>
+        <!-- </ul> -->
+        <mat-card class="card11">
+          <div class="divvv">
+
+            <mat-form-field class="input" appearance="outline">
+              <mat-select placeholder="สถานะงาน" name="jobStatu" [(ngModel)]="customer.jobStatu" required>
+                <mat-option *ngFor="let jobStatu of jobStatus" [value]="jobStatu.Status">
+                  {{jobStatu.Status}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+              <mat-select placeholder="ประสบการณ์การทำงาน" name="workExperience" [(ngModel)]="customer.workExperience"
+                required>
+                <mat-option *ngFor="let workExperience of workExperiences" [value]="workExperience.work">
+                  {{workExperience.work}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field class="input" appearance="outline">
+            <mat-select placeholder="ฐานเงินเดือน" name="salaryBase" [(ngModel)]="customer.salaryBase" required>
+              <mat-option *ngFor="let salaryBase of salaryBases" [value]="salaryBase.Bases">
+                {{salaryBase.Bases}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card>
+        <!-- <mat-card-actions> -->
+        <button class="button1" mat-flat-button color="warn" id="reg" color="primary">บันทึก</button>
+        <!-- </mat-card-actions> -->
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</div>
