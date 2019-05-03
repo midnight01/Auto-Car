@@ -1,0 +1,76 @@
+<!-- <mat-card class="card" *ngFor="let Specification of Specifications">
+  <div class="divv">
+    <img class="cc" src="{{Specification.image}}">
+    <div class="closs">
+      <ul>
+        <a routerLink='cc' (click)="goCc(Specification.specificationId,Specification.brand,Specification.generation)"
+          class="closs">
+          <h4>
+            {{Specification.year}}
+            {{Specification.brand}}
+            {{Specification.generation}}
+            {{Specification.engineSize}}
+            ({{Specification.carMakeover}})
+            {{Specification.modelDetails}}
+            - {{Specification.gearSystem}}
+          </h4>
+        </a>
+      </ul>
+      <ul>
+        <p class="closs2">
+          {{Specification.price | number}} บาท
+        </p>
+      </ul>
+    </div>
+  </div>
+</mat-card>
+<mat-card-actions>
+</mat-card-actions> -->
+
+<div>
+  <div class="divv2">
+    <mat-card class="car1">
+      <h2 class="tete">ตัวเลือกการค้นหา</h2>
+      <button mat-button class="butt" >รถใหม่/รถมือสอง</button>
+      <button mat-button class="butt">ยี่ห้อ</button>
+      <button mat-button class="butt">ภาค</button>
+      <button mat-button class="butt">ราคา</button>
+      <button mat-button class="butt">เลขไมล์ (กม.)</button>
+      <button mat-button class="butt">ระบบเกียร์</button>
+      <button mat-button class="butt">ประเภทรถ</button>
+      <button mat-button class="butt">สี</button>
+    </mat-card>
+    <div class="car2">
+
+      <mat-card class="card" *ngFor="let Specification of Specifications">
+        <div class="divv">
+          <img class="cc" src="{{Specification.image}}">
+          <div class="closs">
+            <ul>
+              <a routerLink='cc'
+                (click)="goCc(Specification.specificationId,Specification.brand,Specification.generation)"
+                class="closs">
+                <h4>
+                  {{Specification.year}}
+                  {{Specification.brand}}
+                  {{Specification.generation}}
+                  {{Specification.engineSize}}
+                  ({{Specification.carMakeover}})
+                  {{Specification.modelDetails}}
+                  - {{Specification.gearSystem}}
+                </h4>
+              </a>
+            </ul>
+            <ul>
+              <p class="closs2">
+                {{Specification.price | number}} บาท
+              </p>
+            </ul>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card-actions>
+      </mat-card-actions>
+    </div>
+  </div>
+</div>

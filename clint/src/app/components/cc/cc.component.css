@@ -1,0 +1,82 @@
+.card {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.img1 {
+  display: flex; 
+}
+
+
+.cc77 {
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+  /* margin:  auto; */
+  /* border: 1px solid black; */
+}
+
+.divv {
+  max-width: 960px;
+  margin: auto;
+  margin-top: 10px;
+  /* margin-right: 12px; */
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+  border-collapse: collapse;
+}
+
+.car {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 10px;
+  /* margin-left: 10px;
+  border: 1px solid black; */
+}
+
+.text {
+  color: #000000;
+  font-size: 20px;
+  margin-left: 10px;
+  /* border: 1px solid black; */
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 10px;
+  /* border: 1px solid black; */
+}
+
+.card3 {
+  max-width: 350px;
+  /* height: 50px; */
+  margin-top: 10px;
+  margin-left: auto;
+}
+
+.button1 {
+  margin: auto;
+  width: 100%;
+  font-size: 20px;
+}
+
+
+.show {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+.ss {
+  margin: auto;
+  font-size: 20px;
+  margin-top: 35px;
+  color: red;
+}

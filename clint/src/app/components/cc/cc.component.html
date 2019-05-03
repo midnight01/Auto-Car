@@ -1,0 +1,218 @@
+<div>
+      <div class="divv">
+            <h4 class="ss">
+                  {{Specification?.year}}
+                  {{Specification?.brand}}
+                  {{Specification?.generation}}
+                  {{Specification?.engineSize}}
+                  ({{Specification?.carMakeover}})
+                  {{Specification?.modelDetails}}
+                  - {{Specification?.gearSystem}}
+            </h4>
+            <p class="ss">
+                  {{Specification?.price | number}} บาท
+            </p>
+      </div>
+      <div class="divv">
+            <mat-card class="card">
+                  <mat-card class="car">
+                        <img mat-card-image class="image" src="{{cc || Specification?.image}}">
+                        <div class="img1">
+                              <mat-card-content *ngFor="let item of items | async">
+                                    <img class="cc77" src="{{item}}" (click)="img(item)">
+                              </mat-card-content>
+                        </div>
+                  </mat-card>
+                  <mat-card class="card3">
+                        <!-- <mat-card-header> -->
+                        <h2 class="text"><img class="img" width="25" alt="Angular Logo"
+                                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">คำนวณค่างวดรถยนต์
+                        </h2>
+                        <!-- </mat-card-header> -->
+                        <mat-card-content class="show2">
+                              <div>
+                                    <form #regisForm="ngForm" (ngSubmit)="save(Specification?.price)">
+                                          <h4>
+                                                {{Specification?.year}}
+                                                {{Specification?.brand}}
+                                                {{Specification?.generation}}
+                                                {{Specification?.engineSize}}
+                                                ({{Specification?.carMakeover}})
+                                                {{Specification?.modelDetails}}
+                                                - {{Specification?.gearSystem}}
+                                          </h4>
+                                          <h4>
+                                                ราคารถยนต์ : {{Specification?.price | number}} บาท
+                                          </h4>
+
+                                          <mat-form-field class="input" appearance="fill">
+                                                <mat-label>จำนวนเงินดาวน์ / เปอร์เซ็นต์ (%)</mat-label>
+                                                <input matInput placeholder="จำนวนเงินดาวน์ / เปอร์เซ็นต์ (%)"
+                                                      [(ngModel)]="carloan.deposit" name="deposit" required>
+                                          </mat-form-field>
+
+
+                                          <mat-form-field class="input" appearance="outline">
+                                                <mat-select placeholder="จำนวนงวด" name="numberInstallment"
+                                                      [(ngModel)]="carloan.numberInstallment" required>
+                                                      <mat-option *ngFor="let numberInstallment of numberInstallments"
+                                                            [value]="numberInstallment.Number">
+                                                            {{numberInstallment.Number}}
+                                                      </mat-option>
+                                                </mat-select>
+                                          </mat-form-field>
+
+
+                                          <mat-form-field class="input" appearance="outline">
+                                                <mat-label>ดอกเบี้ย / %ต่อปี</mat-label>
+                                                <input matInput placeholder="ดอกเบี้ย / %ต่อปี" name="interest"
+                                                      [(ngModel)]="carloan.interest" required>
+                                          </mat-form-field>
+
+
+                                          <div class="button-submit">
+                                                <button mat-flat-button color="warn" id="reg">
+                                                      คำนวณ
+                                                </button>
+                                          </div>
+                                          <mat-card-actions>
+                                          </mat-card-actions>
+                                          <mat-card class="dasd">
+                                                <h4>
+                                                      เป็นเงินดาวน์ (บาท) : {{deposit | number}}
+                                                </h4>
+                                                <h4>
+                                                      ยอดไฟแนนซ์ (บาท) : {{Financing | number}}
+                                                </h4>
+                                                <h4>
+                                                      ค่างวดต่อเดือน (บาท) : {{payment | number}}
+                                                </h4>
+                                                <!-- <p>
+                                                      *
+                                                      การคำนวนสินเชื่อนี้เป็นเพียงเครื่องมือที่ให้คำแนะนำเบื้องต้นเท่านั้น
+                                                      อัตราดอกเบี้ย จำนวนเงิน และเงื่อนไขต่างๆ
+                                                      จะขึ้นอยู่กับการใช้งานของแต่ละบุคคล โดย Auto Car
+                                                      จะไม่รับประกันความถูกต้อง หรือนำไปใช้งานได้จริงกับการซื้อขายของคุณ
+                                                </p> -->
+                                          </mat-card>
+                                          <mat-card-actions>
+                                          </mat-card-actions>
+                                          <button class="button1" mat-raised-button
+                                                (click)="goCustomer(Specification?.gearSystem)"
+                                                color="primary">สนใจขอสินเชื่อ</button>
+                                    </form>
+                              </div>
+
+                        </mat-card-content>
+                        <mat-card-actions>
+                        </mat-card-actions>
+                  </mat-card>
+            </mat-card>
+            <mat-card class="card">
+                  <mat-card class="card">
+                        <h2>สเปครถ</h2>
+                        <mat-card-content>
+                              <table width="293" height="514" class="table">
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> ประเภทรถ </h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.typeCar}}</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> ยี่ห้อ</h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.brand}}</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> รุ่น</h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.generation}}</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> โฉมรถยนต์</h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.carMakeover}}</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> รายละเอียดรุ่น
+                                                </h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.modelDetails}}</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> ปี</h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.year}}</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> ขนาดเครื่องยนต์</h3>
+                                          </td>
+                                          <td width="55%" align="right">
+                                                <h3>{{Specification?.engineSize}} cc.</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> ระบบเกียร์</h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.gearSystem}}</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> จำนวนที่นั่ง</h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.numberSeats}}</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> เลขไมล์ (กม.)</h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.mileage | number}} km.</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> สี </h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.color}}</h3>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                          <td align="left" valign="middle">
+                                                <h3> ราคา </h3>
+                                          </td>
+                                          <td align="right">
+                                                <h3>{{Specification?.price | number}} บาท</h3>
+                                          </td>
+                                    </tr>
+                              </table>
+                        </mat-card-content>
+                  </mat-card>
+            </mat-card>
+      </div>
+</div>
