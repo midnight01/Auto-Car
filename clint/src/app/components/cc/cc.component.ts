@@ -28,12 +28,12 @@ export class CcComponent implements OnInit {
 
   carloan: Carloan = new Carloan();
   numberInstallments: Installment[] = [
-    { Number: '12 งวด (1 ปี)' },
-    { Number: '24 งวด (2 ปี)' },
-    { Number: '36 งวด (3 ปี)' },
-    { Number: '48 งวด (4 ปี)' },
-    { Number: '60 งวด (5 ปี)' },
-    { Number: '72 งวด (6 ปี)' }
+    { Number: '12 งวด 1 ปี' },
+    { Number: '24 งวด 2 ปี' },
+    { Number: '36 งวด 3 ปี' },
+    { Number: '48 งวด 4 ปี' },
+    { Number: '60 งวด 5 ปี' },
+    { Number: '72 งวด 6 ปี' }
   ];
 
   constructor(db: AngularFireDatabase, private httpClient: HttpClient, private service: CarService, private router: Router, private route: ActivatedRoute) {
@@ -43,7 +43,6 @@ export class CcComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.brand = params['brand'];
     });
-    // console.log(this.brand)
     this.route.params.subscribe(params => {
       this.generation = params['generation'];
     });
@@ -55,7 +54,7 @@ export class CcComponent implements OnInit {
       this.Specification = res;
     });
   }
-  Financing: any;
+  financing: any;
   ber: number;
   interest: any;
   year: any;
@@ -63,56 +62,53 @@ export class CcComponent implements OnInit {
   realpaid: any;
   payment: any;
   deposit: any;
+  carloanId:any;
   save(price: number) {
-    // console.log(this.carloan.numberInstallment)
-    if (this.carloan.numberInstallment == '12 งวด (1 ปี)') {
+    if (this.carloan.numberInstallment == '12 งวด 1 ปี') {
       this.ber = 12
       this.year = 1
-    } else if (this.carloan.numberInstallment == '24 งวด (2 ปี)') {
+    } else if (this.carloan.numberInstallment == '24 งวด 2 ปี') {
       this.ber = 24
       this.year = 2
-    } else if (this.carloan.numberInstallment == '36 งวด (3 ปี)') {
+    } else if (this.carloan.numberInstallment == '36 งวด 3 ปี') {
       this.ber = 36
       this.year = 3
-    } else if (this.carloan.numberInstallment == '48 งวด (4 ปี)') {
+    } else if (this.carloan.numberInstallment == '48 งวด 4 ปี') {
       this.ber = 48
       this.year = 4
-    } else if (this.carloan.numberInstallment == '60 งวด (5 ปี)') {
+    } else if (this.carloan.numberInstallment == '60 งวด 5 ปี') {
       this.ber = 60
       this.year = 5
-    } else if (this.carloan.numberInstallment == '72 งวด (6 ปี)') {
+    } else if (this.carloan.numberInstallment == '72 งวด 6 ปี') {
       this.ber = 72
       this.year = 6
     }
     this.deposit = price / Number(this.carloan.deposit);
-    this.Financing = price - (price / Number(this.carloan.deposit));
-    this.interest = (this.Financing * this.carloan.interest) / 100;
+    this.financing = price - (price / Number(this.carloan.deposit));
+    this.interest = (this.financing * this.carloan.interest) / 100;
     this.interestyear = this.interest * this.year;
-    this.realpaid = this.interestyear + this.Financing;
+    this.realpaid = this.interestyear + this.financing;
     this.payment = this.realpaid / this.ber;
   }
-
+  data1:any;
   goCustomer(gearSystem:any) {
-    // console.log(this.carloan.numberInstallment)
-    this.httpClient.post('//localhost:8080/data/Carloan/save/' + this.deposit + '/' + this.Financing + '/' + this.payment + '/' + this.specificationId,
+    this.httpClient.post('//localhost:8080/data/Carloan/save/' + this.deposit + '/' + this.financing + '/' + this.payment + '/' + this.specificationId,
       this.carloan)
       .subscribe(
         data => {
-          console.log('PUT Request is successful', data);
+          // console.log('PUT Request is successful', data);
+          this.data1 = data.carloanId;
+          this.router.navigate(['/carloan', this.ber, this.specificationId, gearSystem,this.data1]);
         },
         error => {
           console.log('Rrror', error);
         }
       );
-    this.router.navigate(['/carloan', this.ber, this.payment, this.Financing, this.specificationId, gearSystem]);
   }
 
   cc:any;
   img(img: any) {
-    // if()
-    // console.log(this.Specification.image);
     this.cc = img;
-    // console.log(img)
   }
 
 }

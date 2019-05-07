@@ -57,7 +57,6 @@ public class SpecificationController {
 
     @GetMapping(path = "/Specification/{specificationId}")
     private ResponseEntity<Specification> findBySpecificationId(@PathVariable long specificationId){
-        System.out.println(specificationId);
         Specification specification = specificationRepository.findBySpecificationId(specificationId);
         if(specification == null){
             return ResponseEntity.notFound().build();

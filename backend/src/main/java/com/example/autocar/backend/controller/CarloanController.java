@@ -42,7 +42,7 @@ public class CarloanController {
         Specification specification = specificationRepository.findBySpecificationId(specificationId);
 
         Carloan carloan = new Carloan();
-//        carloan.setNumberInstallment(newCarloan.getNumberInstallment());
+        carloan.setNumberInstallment(newCarloan.getNumberInstallment());
         carloan.setInterest(newCarloan.getInterest());
         carloan.setDeposit(deposit);
         carloan.setFinancing(Financing);
@@ -50,7 +50,7 @@ public class CarloanController {
         carloan.setSpecification(specification);
 
         carloanRepository.save(carloan);
-        return new ResponseEntity<>(new ResponseMessage("Save Data successfully!"), HttpStatus.OK);
+        return ResponseEntity.ok().body(carloan);
     }
 
     @DeleteMapping("/Carloan/delete/{id}")
@@ -79,4 +79,5 @@ public class CarloanController {
         }
         return ResponseEntity.ok().body(carloan);
     }
+
 }
