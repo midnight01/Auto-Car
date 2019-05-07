@@ -19,8 +19,8 @@ public class Customer {
     private  String salaryBase;
     private  String jobStatu;
 
-//    @ManyToOne
-//    private  Carloan carloan;
+    @ManyToOne
+    private  Carloan carloan;
     public Customer(){}
 
     public Long getCustomerId() {
@@ -95,11 +95,11 @@ public class Customer {
         this.jobStatu = jobStatu;
     }
 
-//    public Carloan getCarloan() {
-//        return carloan;
-//    }
-//
-//    public void setCarloan(Carloan carloan) {
-//        this.carloan = carloan;
-//    }
+    public Carloan getCarloan() {
+        return carloan;
+    }
+
+    public void setCarloan(Carloan carloan) {
+        this.carloan = carloan;
+    }
 }

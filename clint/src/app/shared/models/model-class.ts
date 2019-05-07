@@ -20,10 +20,6 @@ export class Carloan {
     numberInstallment?: any;
     interest?: any;
     deposit?: any;
-    // Financing?: any;
-    // Payment?: any;
-    // car?: car;
-
 }
 
 export class customer {
@@ -38,4 +34,11 @@ export class customer {
     salaryBase?: any;
     carloac?: Carloan;
 
+}
+
+export class data {
+    carloanId?:any;
+    numberInstallment?: any;
+    interest?: any;
+    deposit?: any;
 }

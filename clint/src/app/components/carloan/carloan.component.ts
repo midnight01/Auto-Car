@@ -35,6 +35,7 @@ export class CarloanComponent implements OnInit {
   financing: any;
   gearSystem: any;
   gear: string;
+  carloan:any;
   customer: customer = new customer;
 
   jobStatus: jobStatus[] = [
@@ -58,30 +59,20 @@ export class CarloanComponent implements OnInit {
     { Bases: '100,000 ขึ้นไป' }
   ];
 
-  // email = new FormControl('', [Validators.required, Validators.email]);
-
-  // getErrorMessage() {
-  //   return this.email.hasError('required') ? 'You must enter a value' :
-  //       this.email.hasError('email') ? 'Not a valid email' :
-  //           '';
-  // }
-
-
+  carloanId:any;
   constructor(private httpClient: HttpClient, private service: CarService, private router: Router, private route: ActivatedRoute, private service2: CarloanService) {
     this.route.params.subscribe(params => {
       this.ber = params['id1'];
-    });
-    this.route.params.subscribe(params => {
-      this.payment = params['id2'];
-    });
-    this.route.params.subscribe(params => {
-      this.financing = params['id3'];
     });
     this.route.params.subscribe(params => {
       this.specificationId = params['id4'];
     });
     this.route.params.subscribe(params => {
       this.gearSystem = params['data'];
+    });
+    this.route.params.subscribe(params => {
+      this.carloanId = params['data1'];
+      // console.log(this.carloanId);
     });
 
     if (this.gearSystem = "AT") {
@@ -96,36 +87,26 @@ export class CarloanComponent implements OnInit {
     this.sub = this.service.getSpecificationID(this.specificationId).subscribe((res) => {
       this.Specification = res;
     });
-    // this.sub = this.service2.getCarloanId(this.carloanId).subscribe((res) => {
-    //   this.Specification = res;
-    // });
+    this.sub = this.service2.getCarloanId(this.carloanId).subscribe((res) => {
+      this.carloan = res;
+    });
   }
   i: number;
   idcardnumber: any;
   nn: String;
   save() {
     // console.log(this.customer);
-    // this.idcardnumber = this.customer.idCardNumber;
-    // for (this.i = 0; this.i < this.idcardnumber.length; this.i++) {
-    //   this.nn = (this.idcardnumber[0] + -+ this.idcardnumber[1] +
-    //     this.idcardnumber[2] + this.idcardnumber[3] + this.idcardnumber[4] + -+
-    //     this.idcardnumber[5] + this.idcardnumber[6] + this.idcardnumber[7] +
-    //     this.idcardnumber[8] + this.idcardnumber[9] + -+this.idcardnumber[10] + -+
-    //     this.idcardnumber[11] + this.idcardnumber[12])
-    // }
-
-    // console.log(this.customer)
-    this.httpClient.post("//localhost:8080/data/Customer/save",
+    this.httpClient.post("//localhost:8080/data/Customer/save/"+this.carloanId,
       this.customer)
       .subscribe(
         data => {
-          console.log('PUT Request is successful', data);
+          // console.log('PUT Request is successful', data);
+          this.router.navigate(['/home']);
         },
         error => {
           console.log('Rrror', error);
         }
-      );
-    this.router.navigate(['/home']);
+      )
   }
 
 }

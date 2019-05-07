@@ -12,15 +12,12 @@ public class Carloan {
     @GeneratedValue(generator = "carloan_seq", strategy = GenerationType.SEQUENCE)
     private Long carloanId;
 
-//    private String numberInstallment;
-    @NumberFormat
+    private String numberInstallment;
     private String interest;
-
-
     @NumberFormat
     private float deposit;
     @NumberFormat
-    private float Financing;
+    private float financing;
     @NumberFormat
     private float payment;
 
@@ -28,6 +25,14 @@ public class Carloan {
     private Specification specification;
 
     public Carloan(){}
+
+    public String getNumberInstallment() {
+        return numberInstallment;
+    }
+
+    public void setNumberInstallment(String numberInstallment) {
+        this.numberInstallment = numberInstallment;
+    }
 
     public Long getCarloanId() {
         return carloanId;
@@ -40,14 +45,6 @@ public class Carloan {
     public float getDeposit() {
         return deposit;
     }
-
-//    public String getNumberInstallment() {
-//        return numberInstallment;
-//    }
-//
-//    public void setNumberInstallment(String numberInstallment) {
-//        this.numberInstallment = numberInstallment;
-//    }
 
     public String getInterest() {
         return interest;
@@ -62,11 +59,11 @@ public class Carloan {
     }
 
     public float getFinancing() {
-        return Financing;
+        return financing;
     }
 
     public void setFinancing(float financing) {
-        Financing = financing;
+        this.financing = financing;
     }
 
     public float getPayment() {

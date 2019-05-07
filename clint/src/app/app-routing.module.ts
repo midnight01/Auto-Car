@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'go', component: HomeComponent},
   {path: 'cc/:id/:brand/:generation', component: CcComponent},
-  {path: 'carloan/:id1/:id2/:id3/:id4/:data', component: CarloanComponent}
+  {path: 'carloan/:id1/:id4/:data/:data1', component: CarloanComponent}
 
 ];
 

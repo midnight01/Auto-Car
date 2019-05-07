@@ -36,17 +36,48 @@ public class CustomerController {
         return customerRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping(path = "/Customer/save")
-    public ResponseEntity<?> newCustomer(@RequestBody Customer newCustomer) {
+    @PostMapping(path = "/Customer/save/{carloanId}")
+    public ResponseEntity<?> newCustomer(@RequestBody Customer newCustomer,@PathVariable long carloanId) {
 
-//        Carloan carloan = carloanRepository.findByCarloanId(carloanId);
+
+        Carloan carloan = carloanRepository.findByCarloanId(carloanId);
         Customer customer = new Customer();
+//        String[] idcard = {newCustomer.getIdCardNumber()};
+//        String nn;
+//        for (int i = 0; i < idcard.length; i++) {
+//             nn = (idcard[0] +"-"+ idcard[1] +
+//                     idcard[2] + idcard[3] + idcard[4] + "-"+
+//                     idcard[5] + idcard[6] + idcard[7] +
+//                     idcard[8] + idcard[9] +"-"+idcard[10] +"-"+
+//                     idcard[11] + idcard[12]);
+//            System.out.println(nn);
+//        }
+//
+//        String idcard[] = {newCustomer.getIdCardNumber()};
+//        int i;
+//        String x,x1;
+//        for (i = 0; i < idcard.length; i++) {
+//
+//            nn = (idcard[0] +"-"+ idcard[1] +
+//                    idcard[2] + idcard[3] + idcard[4] + "-"+
+//                    idcard[5] + idcard[6] + idcard[7] +
+//                    idcard[8] + idcard[9] +"-"+idcard[10] +"-"+
+//                    idcard[11] + idcard[12]);
+//            System.out.println(nn);
+//            x = idcard[i+2];
+//            x1 = idcard[2];
+//            System.out.print(x + " sdfgsdfsdfsdfsdfsdfsdfsdf");
+//            System.out.print(" sdfgsdfsdfsdfsdfsdfsdfsdf   " +x1 + " sdfgsdfsdfsdfsdfsdfsdfsdf");
+//        }
+
+
+
         customer.setFirstName(newCustomer.getFirstName());
         customer.setLastName(newCustomer.getLastName());
         customer.setPhoneNumber(newCustomer.getPhoneNumber());
         customer.setEmail(newCustomer.getEmail());
         customer.setIdCardNumber(newCustomer.getIdCardNumber());
-//        customer.setCarloan(carloan);
+        customer.setCarloan(carloan);
         customer.setJobStatu(newCustomer.getJobStatu());
         customer.setWorkExperience(newCustomer.getWorkExperience());
         customer.setSalaryBase(newCustomer.getSalaryBase());

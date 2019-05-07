@@ -27,7 +27,7 @@
       </div>
       <mat-card class="card5">
         <p class="text">วงเงินที่ต้องการ</p>
-        <p class="text1">{{financing | number}} บาท</p>
+        <p class="text1">{{carloan?.financing | number}} บาท</p>
       </mat-card>
       <mat-card class="card6">
         <p class="text">ระยะเวลาผ่อน </p>
@@ -35,7 +35,7 @@
       </mat-card>
       <mat-card class="card7">
         <p class="text">ค่างวดต่อเดือน</p>
-        <p class="text1">{{payment | number}} บาท</p>
+        <p class="text1">{{carloan?.payment | number}} บาท</p>
       </mat-card>
     </mat-card-content>
     <mat-card-actions>
