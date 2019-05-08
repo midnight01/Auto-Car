@@ -42,41 +42,25 @@ public class CustomerController {
 
         Carloan carloan = carloanRepository.findByCarloanId(carloanId);
         Customer customer = new Customer();
-//        String[] idcard = {newCustomer.getIdCardNumber()};
-//        String nn;
-//        for (int i = 0; i < idcard.length; i++) {
-//             nn = (idcard[0] +"-"+ idcard[1] +
-//                     idcard[2] + idcard[3] + idcard[4] + "-"+
-//                     idcard[5] + idcard[6] + idcard[7] +
-//                     idcard[8] + idcard[9] +"-"+idcard[10] +"-"+
-//                     idcard[11] + idcard[12]);
-//            System.out.println(nn);
-//        }
-//
-//        String idcard[] = {newCustomer.getIdCardNumber()};
-//        int i;
-//        String x,x1;
-//        for (i = 0; i < idcard.length; i++) {
-//
-//            nn = (idcard[0] +"-"+ idcard[1] +
-//                    idcard[2] + idcard[3] + idcard[4] + "-"+
-//                    idcard[5] + idcard[6] + idcard[7] +
-//                    idcard[8] + idcard[9] +"-"+idcard[10] +"-"+
-//                    idcard[11] + idcard[12]);
-//            System.out.println(nn);
-//            x = idcard[i+2];
-//            x1 = idcard[2];
-//            System.out.print(x + " sdfgsdfsdfsdfsdfsdfsdfsdf");
-//            System.out.print(" sdfgsdfsdfsdfsdfsdfsdfsdf   " +x1 + " sdfgsdfsdfsdfsdfsdfsdfsdf");
-//        }
 
-
+        String idcard = newCustomer.getIdCardNumber();
+        String idcard1;
+        idcard1 = (idcard.charAt(0) +"-"+ idcard.charAt(1) +
+                     idcard.charAt(2) + idcard.charAt(3) + idcard.charAt(4) + "-"+
+                     idcard.charAt(5) + idcard.charAt(6) + idcard.charAt(7) +
+                     idcard.charAt(8) + idcard.charAt(9) +"-"+idcard.charAt(10)+
+                     idcard.charAt(11)+"-" + idcard.charAt(12));
+        String phone = newCustomer.getPhoneNumber();
+        String phone1;
+        phone1 = (phone.charAt(0) + phone.charAt(1)+"-" + phone.charAt(2)
+                +phone.charAt(3) + phone.charAt(4) + phone.charAt(5)+"-" + phone.charAt(6)
+                +phone.charAt(7) + phone.charAt(8) + phone.charAt(9));
 
         customer.setFirstName(newCustomer.getFirstName());
         customer.setLastName(newCustomer.getLastName());
-        customer.setPhoneNumber(newCustomer.getPhoneNumber());
+        customer.setPhoneNumber(phone1);
         customer.setEmail(newCustomer.getEmail());
-        customer.setIdCardNumber(newCustomer.getIdCardNumber());
+        customer.setIdCardNumber(idcard1);
         customer.setCarloan(carloan);
         customer.setJobStatu(newCustomer.getJobStatu());
         customer.setWorkExperience(newCustomer.getWorkExperience());

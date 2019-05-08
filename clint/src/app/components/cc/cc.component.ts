@@ -97,7 +97,8 @@ export class CcComponent implements OnInit {
       .subscribe(
         data => {
           // console.log('PUT Request is successful', data);
-          this.data1 = data.carloanId;
+          this.data1 = data;
+          // console.log(this.data1);
           this.router.navigate(['/carloan', this.ber, this.specificationId, gearSystem,this.data1]);
         },
         error => {
