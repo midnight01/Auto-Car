@@ -35,10 +35,9 @@ export class customer {
     carloac?: Carloan;
 
 }
-
-export class data {
-    carloanId?:any;
-    numberInstallment?: any;
-    interest?: any;
-    deposit?: any;
-}
+export class User {
+    username: string;
+    password: string;
+    mobileNumber: string;
+    email: string;
+} 

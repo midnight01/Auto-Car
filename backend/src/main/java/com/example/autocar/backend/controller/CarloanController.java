@@ -50,7 +50,7 @@ public class CarloanController {
         carloan.setSpecification(specification);
 
         carloanRepository.save(carloan);
-        return ResponseEntity.ok().body(carloan);
+        return ResponseEntity.ok().body(carloan.getCarloanId());
     }
 
     @DeleteMapping("/Carloan/delete/{id}")

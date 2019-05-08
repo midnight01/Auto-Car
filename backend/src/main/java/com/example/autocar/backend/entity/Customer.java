@@ -1,6 +1,7 @@
 package com.example.autocar.backend.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 public class Customer {
@@ -13,6 +14,7 @@ public class Customer {
     private  String firstName;
     private  String lastName;
     private  String phoneNumber;
+    @Email
     private  String email;
     private  String idCardNumber;
     private  String workExperience;
